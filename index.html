@@ -20,7 +20,6 @@
       scroll-behavior: smooth;
     }
 
-    /* modern soft palette */
     :root {
       --primary: #2c7da0;
       --primary-light: #61a5c2;
@@ -41,7 +40,6 @@
       padding: 0 1.5rem;
     }
 
-    /* navigation */
     .navbar {
       background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(8px);
@@ -106,7 +104,6 @@
       color: var(--gray-800);
     }
 
-    /* hero */
     .hero {
       background: linear-gradient(120deg, #f3f9ff 0%, #ffffff 100%);
       padding: 4rem 0 3rem;
@@ -223,11 +220,7 @@
     .avatar-circle {
       width: 280px;
       height: 280px;
-      background: linear-gradient(145deg, var(--primary-light), var(--primary-dark));
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       margin: 0 auto;
       box-shadow: var(--shadow-md);
       overflow: hidden;
@@ -251,7 +244,6 @@
       object-fit: cover;
     }
 
-    /* section styling */
     section {
       padding: 5rem 0;
     }
@@ -290,7 +282,6 @@
       transform: translateX(-50%);
     }
 
-    /* about */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -351,7 +342,6 @@
       transform: scale(1.02);
     }
 
-    /* services / beginner cards */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -397,7 +387,6 @@
       transform: rotate(5deg) scale(1.1);
     }
 
-    /* projects gallery */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -460,7 +449,6 @@
       margin: 1rem 0;
     }
 
-    /* github & code */
     .code-stats {
       display: flex;
       flex-wrap: wrap;
@@ -512,7 +500,6 @@
       box-shadow: var(--shadow-md);
     }
 
-    /* simple contact info (no form) */
     .simple-contact {
       background: white;
       border-radius: 1.5rem;
@@ -660,10 +647,8 @@
     </div>
     <div class="hero-image">
       <div class="avatar-circle" id="profileAvatar">
-        <i class="fas fa-globe-asia" style="font-size: 5rem; color: white;"></i>
+        <img src="Screenshot 2026-05-31 151054.png" alt="Sirajum Munira Proma">
       </div>
-      <p style="margin-top: 1rem; font-size: 0.8rem; color: #6c757d;"><i class="fas fa-camera"></i> Screenshot 2026-05-31 151054.png</p>
-      <input type="file" id="photoUpload" accept="image/*" style="margin-top: 0.5rem; font-size: 0.8rem; background: white; border-radius: 40px; padding: 4px 12px;">
     </div>
   </div>
 </section>
@@ -739,7 +724,7 @@
   </div>
 </section>
 
-<!-- Connect Section (Simple contact info without form) -->
+<!-- Connect Section -->
 <section id="connect">
   <div class="container">
     <div class="section-header">
@@ -788,21 +773,6 @@
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
-
-  // Profile photo upload
-  const photoInput = document.getElementById('photoUpload');
-  const avatarDiv = document.getElementById('profileAvatar');
-  photoInput.addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        avatarDiv.innerHTML = `<img src="${e.target.result}" alt="Profile Photo">`;
-      };
-      reader.readAsDataURL(file);
-    }
-  });
 </script>
 </body>
 </html>
-```
