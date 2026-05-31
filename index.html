@@ -1,1 +1,807 @@
+This is a complete, professional portfolio website for Sirajum Munira Proma, a beginner in GIS and Remote Sensing. You can save this code as an HTML file and open it in any browser.
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sirajum Munira Proma | GIS & RS Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: #f9fafc;
+      color: #1f2937;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* modern soft palette */
+    :root {
+      --primary: #2c7da0;
+      --primary-light: #61a5c2;
+      --primary-dark: #1f5068;
+      --accent: #e9c46a;
+      --accent-dark: #e76f51;
+      --gray-100: #f8f9fa;
+      --gray-200: #e9ecef;
+      --gray-600: #6c757d;
+      --gray-800: #343a40;
+      --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* navigation */
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .nav-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+
+    .logo i {
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      color: var(--primary);
+      margin-right: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--gray-800);
+      transition: color 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .mobile-menu {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--gray-800);
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(120deg, #f3f9ff 0%, #ffffff 100%);
+      padding: 4rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3rem;
+      justify-content: space-between;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .badge {
+      background: rgba(44, 125, 160, 0.1);
+      color: var(--primary-dark);
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      color: #0f172a;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+      position: relative;
+    }
+
+    .hero-sub {
+      font-size: 1.25rem;
+      color: var(--gray-600);
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--primary);
+      padding-left: 1rem;
+    }
+
+    .hero-text {
+      color: #4b5563;
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.7rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -5px rgba(44, 125, 160, 0.4);
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--gray-300);
+      background: white;
+      color: var(--gray-800);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .hero-image {
+      flex: 0.8;
+      text-align: center;
+    }
+
+    .avatar-circle {
+      width: 280px;
+      height: 280px;
+      background: linear-gradient(145deg, var(--primary-light), var(--primary-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      box-shadow: var(--shadow-md);
+    }
+
+    .avatar-circle i {
+      font-size: 7rem;
+      color: white;
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    /* section styling */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 4px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header .section-title:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* about */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+    }
+
+    .about-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .skill-pill {
+      background: #eef2ff;
+      color: var(--primary-dark);
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* services / beginner cards */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+      text-align: center;
+      border: 1px solid #eef2ff;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-light);
+    }
+
+    .service-icon {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    /* projects gallery */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-item {
+      background: white;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s;
+    }
+
+    .project-img-placeholder {
+      height: 200px;
+      background: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--primary);
+      background: linear-gradient(135deg, #d9e6f2, #f0f4fa);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    /* github & code */
+    .code-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-block {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      min-width: 160px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .github-profile {
+      text-align: center;
+      background: white;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* contact */
+    .contact-flex {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: #eef2ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-icon {
+      background: #f1f5f9;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-dark);
+      transition: 0.2s;
+      text-decoration: none;
+    }
+
+    .social-icon:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .contact-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--gray-200);
+      border-radius: 1rem;
+      font-family: inherit;
+      transition: 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(44, 125, 160, 0.2);
+    }
+
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu {
+        display: block;
+      }
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 2rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        gap: 1rem;
+      }
+      .hero-grid {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .hero-content {
+        text-align: center;
+      }
+      .hero-sub {
+        border-left: none;
+        text-align: center;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .about-grid, .contact-flex {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-flex">
+    <div class="logo"><i class="fas fa-map-marked-alt"></i> Sirajum Munira</div>
+    <button class="mobile-menu" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links" id="navList">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#code">Code</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero section -->
+<section id="home" class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="badge"><i class="fas fa-graduation-cap"></i> Beginner in GIS & Remote Sensing</div>
+      <h1>Hi, I'm <span>Sirajum Munira Proma</span></h1>
+      <div class="hero-sub">Exploring Earth from above & mapping the future</div>
+      <p class="hero-text">Passionate about geospatial technology, digital mapping, and Land Use Land Cover analysis. I'm at the early stage of my journey but already creating meaningful geospatial insights.</p>
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-primary"><i class="fas fa-map"></i> Explore my work</a>
+        <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="avatar-circle">
+        <i class="fas fa-globe-asia"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">About Me</h2>
+      <p style="color: #4b5563; max-width: 700px; margin-top: 1rem;">GIS enthusiast building foundational skills in remote sensing and spatial storytelling.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-icon"><i class="fas fa-map-marked-alt"></i></div>
+        <h3 style="margin-bottom: 0.8rem;">My journey in GIS & RS</h3>
+        <p style="color: #4b5563;">I am a beginner level GIS & Remote Sensing learner with growing experience in LULC mapping, digitization, and satellite image interpretation. I translate geographic problems into visual solutions using open-source tools.</p>
+        <div class="skill-list" style="margin-top: 1.5rem;">
+          <span class="skill-pill">Digitalization</span>
+          <span class="skill-pill">LULC Mapping</span>
+          <span class="skill-pill">QGIS</span>
+          <span class="skill-pill">ArcGIS basics</span>
+          <span class="skill-pill">Satellite Imagery</span>
+          <span class="skill-pill">Google Earth Engine (learning)</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-icon"><i class="fas fa-chart-line"></i></div>
+        <h3 style="margin-bottom: 0.8rem;">What drives me</h3>
+        <p>I believe that geospatial data can transform decision-making — from urban planning to environmental monitoring. Even as a beginner, I have completed several mini projects to understand land cover dynamics and map features accurately.</p>
+        <p style="margin-top: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Dedicated to learning remote sensing fundamentals <br>
+        <i class="fas fa-check-circle" style="color: var(--primary);"></i> Hands-on with digitization & raster analysis <br>
+        <i class="fas fa-check-circle" style="color: var(--primary);"></i> Building a portfolio of thematic maps</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services / Skills area (Beginner expertise) -->
+<section id="services" style="background: #fefcf5;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">What I can do (Beginner Level)</h2>
+      <p>Core geospatial tasks I confidently perform</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-draw-polygon"></i></div>
+        <h3>Digitization & Vector Editing</h3>
+        <p>Creating shapefiles, heads-up digitization, and attribute data entry for topographic and landuse features.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-layer-group"></i></div>
+        <h3>Land Use / Land Cover (LULC)</h3>
+        <p>Supervised classification of satellite imagery to generate LULC maps and basic change interpretation.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-map"></i></div>
+        <h3>Thematic Mapping</h3>
+        <p>Designing choropleth maps, layout preparation, and exporting high-quality maps for reports.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-satellite-dish"></i></div>
+        <h3>Remote Sensing Basics</h3>
+        <p>Working with Landsat/Sentinel images, band combinations, NDVI calculation, and image enhancement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects (no drive links, just beginner showcase) -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Beginner Geospatial Projects</h2>
+      <p>My hands-on work in GIS & Remote Sensing — all created during learning journey</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-item">
+        <div class="project-img-placeholder"><i class="fas fa-chart-line fa-4x"></i></div>
+        <div class="project-content">
+          <h3 class="project-title">LULC Map: Dhaka Region</h3>
+          <p>Supervised classification of Landsat imagery to identify built-up, vegetation, water bodies, and bare land. Achieved 78% overall accuracy.</p>
+          <div class="project-tags">
+            <span class="skill-pill">LULC</span>
+            <span class="skill-pill">QGIS</span>
+            <span class="skill-pill">Semi-automatic</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-item">
+        <div class="project-img-placeholder"><i class="fas fa-vector-square fa-4x"></i></div>
+        <div class="project-content">
+          <h3 class="project-title">Digitalization of Rural Settlement</h3>
+          <p>Digitized more than 500 building footprints and road networks from high-resolution satellite basemap to understand sprawl patterns.</p>
+          <div class="project-tags">
+            <span class="skill-pill">Digitization</span>
+            <span class="skill-pill">ArcGIS</span>
+            <span class="skill-pill">Topology check</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-item">
+        <div class="project-img-placeholder"><i class="fas fa-water fa-4x"></i></div>
+        <div class="project-content">
+          <h3 class="project-title">Waterbody Change Detection</h3>
+          <p>Compared two temporal NDWI maps to detect seasonal changes in wetland areas using Sentinel-2 imagery and spectral indices.</p>
+          <div class="project-tags">
+            <span class="skill-pill">NDWI</span>
+            <span class="skill-pill">Remote Sensing</span>
+            <span class="skill-pill">Change Detection</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <p style="color: var(--gray-600);"><i class="fas fa-map-pin"></i> More mapping & analysis projects available on GitHub</p>
+    </div>
+  </div>
+</section>
+
+<!-- Code & GitHub Section (beginner stats) -->
+<section id="code" style="background: #f1f5f9;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Code & Learning Resources</h2>
+      <p>Open source scripts and geospatial experiments on GitHub</p>
+    </div>
+    <div class="code-stats">
+      <div class="stat-block"><div class="stat-number">5+</div><div>GIS Projects</div></div>
+      <div class="stat-block"><div class="stat-number">3</div><div>Python Scripts (basic)</div></div>
+      <div class="stat-block"><div class="stat-number">10+</div><div>Maps Created</div></div>
+      <div class="stat-block"><div class="stat-number">📚</div><div>Learning GEE</div></div>
+    </div>
+    <div class="github-profile">
+      <i class="fab fa-github" style="font-size: 2.5rem; color: #0f172a;"></i>
+      <h3 style="margin: 0.7rem 0;">Explore my GitHub</h3>
+      <p>I share my beginner-level QGIS projects, digitization exercises and remote sensing experiments. Check out my repository with sample LULC workflows.</p>
+      <a href="https://github.com/proma-ges" target="_blank" class="btn btn-primary" style="margin-top: 1.2rem; display: inline-flex;"><i class="fab fa-github"></i> github.com/proma-ges</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact section with LinkedIn & GitHub links -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Connect with me</h2>
+      <p>I'd love to collaborate or share knowledge about GIS/RS</p>
+    </div>
+    <div class="contact-flex">
+      <div class="contact-info-card">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div><strong>Email</strong><br>sirajum.munira@example.com</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div><strong>Location</strong><br>Bangladesh</div>
+        </div>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/sirajum-munira-proma-772b12323/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/proma-ges" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--gray-600);">Open to entry-level GIS opportunities and collaborative mapping projects.</p>
+      </div>
+      <div class="contact-form">
+        <form id="contactForm">
+          <div class="form-group">
+            <input type="text" placeholder="Your name" id="formName" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Email address" id="formEmail" required>
+          </div>
+          <div class="form-group">
+            <textarea rows="4" placeholder="Tell me about your GIS/RS ideas or questions..." id="formMsg" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Sirajum Munira Proma — Beginner GIS & Remote Sensing Portfolio</p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem;">"Mapping my way through geospatial science, one pixel at a time"</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menuToggle');
+  const navList = document.getElementById('navList');
+  menuBtn.addEventListener('click', () => {
+    navList.classList.toggle('active');
+    menuBtn.innerHTML = navList.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navList.classList.remove('active');
+      menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    });
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // contact form alert (beginner friendly)
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('formName').value.trim();
+    if(name) {
+      alert(`Thank you ${name}! I will get back to you soon.`);
+      contactForm.reset();
+    } else {
+      alert('Please fill your name and message :)');
+    }
+  });
+</script>
+</body>
+</html>
+```
